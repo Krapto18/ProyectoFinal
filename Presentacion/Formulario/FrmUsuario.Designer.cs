@@ -44,6 +44,7 @@
             this.TxtEmailUsuario = new System.Windows.Forms.TextBox();
             this.TxtBuscarNombreUsuario = new System.Windows.Forms.TextBox();
             this.DgvUsuarios = new System.Windows.Forms.DataGridView();
+            this.BtnLimpiarUsuario = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,6 +112,7 @@
             this.btnModificarUsuario.TabIndex = 5;
             this.btnModificarUsuario.Text = "Modificar";
             this.btnModificarUsuario.UseVisualStyleBackColor = false;
+            this.btnModificarUsuario.Click += new System.EventHandler(this.btnModificarUsuario_Click);
             // 
             // btnEliminarUsuario
             // 
@@ -123,6 +125,7 @@
             this.btnEliminarUsuario.TabIndex = 6;
             this.btnEliminarUsuario.Text = "Eliminar";
             this.btnEliminarUsuario.UseVisualStyleBackColor = false;
+            this.btnEliminarUsuario.Click += new System.EventHandler(this.btnEliminarUsuario_Click);
             // 
             // label5
             // 
@@ -144,6 +147,7 @@
             this.chkUsuarios.TabIndex = 9;
             this.chkUsuarios.Text = "Mostrar solo activos";
             this.chkUsuarios.UseVisualStyleBackColor = true;
+            this.chkUsuarios.CheckedChanged += new System.EventHandler(this.chkUsuarios_CheckedChanged);
             // 
             // TxtCodigoUsuario
             // 
@@ -181,6 +185,8 @@
             this.TxtBuscarNombreUsuario.Size = new System.Drawing.Size(210, 22);
             this.TxtBuscarNombreUsuario.TabIndex = 14;
             this.TxtBuscarNombreUsuario.TextChanged += new System.EventHandler(this.TxtBuscarNombreUsuario_TextChanged);
+            this.TxtBuscarNombreUsuario.Enter += new System.EventHandler(this.TxtBuscarNombreUsuario_Enter);
+            this.TxtBuscarNombreUsuario.Leave += new System.EventHandler(this.TxtBuscarNombreUsuario_Leave);
             // 
             // DgvUsuarios
             // 
@@ -192,12 +198,26 @@
             this.DgvUsuarios.Size = new System.Drawing.Size(690, 195);
             this.DgvUsuarios.TabIndex = 15;
             this.DgvUsuarios.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DgvUsuarios_DataError);
+            this.DgvUsuarios.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.DgvUsuarios_RowPrePaint);
+            this.DgvUsuarios.SelectionChanged += new System.EventHandler(this.DgvUsuarios_SelectionChanged);
+            // 
+            // BtnLimpiarUsuario
+            // 
+            this.BtnLimpiarUsuario.Image = ((System.Drawing.Image)(resources.GetObject("BtnLimpiarUsuario.Image")));
+            this.BtnLimpiarUsuario.Location = new System.Drawing.Point(341, 39);
+            this.BtnLimpiarUsuario.Name = "BtnLimpiarUsuario";
+            this.BtnLimpiarUsuario.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.BtnLimpiarUsuario.Size = new System.Drawing.Size(49, 44);
+            this.BtnLimpiarUsuario.TabIndex = 16;
+            this.BtnLimpiarUsuario.UseVisualStyleBackColor = true;
+            this.BtnLimpiarUsuario.Click += new System.EventHandler(this.BtnLimpiarUsuario_Click);
             // 
             // FrmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(752, 521);
+            this.Controls.Add(this.BtnLimpiarUsuario);
             this.Controls.Add(this.DgvUsuarios);
             this.Controls.Add(this.TxtBuscarNombreUsuario);
             this.Controls.Add(this.TxtEmailUsuario);
@@ -239,5 +259,6 @@
         private System.Windows.Forms.TextBox TxtEmailUsuario;
         private System.Windows.Forms.TextBox TxtBuscarNombreUsuario;
         private System.Windows.Forms.DataGridView DgvUsuarios;
+        private System.Windows.Forms.Button BtnLimpiarUsuario;
     }
 }

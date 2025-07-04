@@ -31,6 +31,11 @@ namespace Datos
         public string Email { get; set; }
         public Nullable<int> RolId { get; set; }
         public short Estado { get; set; }
+        public Nullable<System.DateTime> FechaRegistro { get; set; }
+        public Nullable<System.DateTime> FechaModificacion { get; set; }
+        public string Apellido { get; set; }
+        public string NombreUsuario { get; set; }
+        public string Contrasenia { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Calificacion> Calificacion { get; set; }

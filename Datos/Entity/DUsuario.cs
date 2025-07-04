@@ -28,14 +28,21 @@ namespace Datos.Entity
 			}
         }
 		public String Modificar(Usuario usuario) {
-			try
+            if (string.IsNullOrWhiteSpace(usuario.Codigo))
+                return "Código de usuario inválido.";
+            try
 			{
 				using (var context = new BDFEntities())
 				{
                     Usuario usuarioTemp = context.Usuario.FirstOrDefault(u => u.Codigo.Equals(usuario.Codigo));
+                    if (usuarioTemp == null)
+                    {
+                        return "El usuario no fue encontrado para modificar.";
+                    }
                     usuarioTemp.Nombre = usuario.Nombre;
 					usuarioTemp.Email= usuario.Email;
 					usuarioTemp.RolId= usuario.RolId;
+					usuarioTemp.FechaModificacion = usuario.FechaModificacion;
 					context.SaveChanges();
                 }
 				return "Modificado correctamente";
@@ -108,5 +115,17 @@ namespace Datos.Entity
 				throw;
 			}
 		}
+        public Usuario IniciarSesion(string nombreUsuarioOCorreo, string contrasenia)
+        {
+            using (var context = new BDFEntities())
+            {
+                return context.Usuario
+                    .Include("Rol")
+                    .FirstOrDefault(u =>
+                        (u.NombreUsuario == nombreUsuarioOCorreo || u.Email == nombreUsuarioOCorreo) &&
+                        u.Contrasenia == contrasenia &&
+                        u.Estado == 1);
+            }
+        }
     }
 }

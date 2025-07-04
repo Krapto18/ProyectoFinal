@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ModelEF.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ModelEF.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Auditoria">
           <Key>
             <PropertyRef Name="Id" />
@@ -147,6 +147,11 @@
           <Property Name="Email" Type="nvarchar" MaxLength="100" />
           <Property Name="RolId" Type="int" />
           <Property Name="Estado" Type="smallint" Nullable="false" />
+          <Property Name="FechaRegistro" Type="datetime" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="100" />
+          <Property Name="NombreUsuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contrasenia" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <Association Name="FK__Calificac__ItemI__76969D2E">
           <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
@@ -435,8 +440,7 @@
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ModelEF" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -616,6 +620,11 @@
           <NavigationProperty Name="Intercambio1" Relationship="Self.FK__Intercamb__Usuar__05D8E0BE" FromRole="Usuario" ToRole="Intercambio" />
           <NavigationProperty Name="Prestamo" Relationship="Self.FK__Prestamo__Usuari__5EBF139D" FromRole="Usuario" ToRole="Prestamo" />
           <NavigationProperty Name="Rol" Relationship="Self.FK__Usuario__RolId__4F7CD00D" FromRole="Usuario" ToRole="Rol" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NombreUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contrasenia" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK__Calificac__ItemI__76969D2E">
           <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
@@ -1057,6 +1066,11 @@
           <EntitySetMapping Name="Usuario">
             <EntityTypeMapping TypeName="ModelEF.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />

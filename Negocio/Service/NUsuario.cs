@@ -27,11 +27,24 @@ namespace Negocio.Service
         public String EliminarLogico(string codigoUsuario)
         {
             if (!dUsuario.ExisteUsuario(codigoUsuario)) return "Código  no encontrado. Ingrese uno válido.";
-            else return dUsuario.EliminarFisico(codigoUsuario);
+            else return dUsuario.EliminarLogico(codigoUsuario);
         }
         public List<Usuario> ListarUsuarios()
         {
             return dUsuario.ListarUsuarios();
+        }
+        public List<Usuario> ListarUsuariosActivos() {
+            return dUsuario.ListarUsuarios().Where(u => u.Estado.Equals(1)).ToList();
+        }
+        public Usuario IniciarSesion(string nombreUsuarioOCorreo, string contrasenia)
+        {
+            DUsuario dUsuario = new DUsuario();
+            Usuario usuario = dUsuario.IniciarSesion(nombreUsuarioOCorreo, contrasenia);
+
+            if (usuario == null)
+                throw new Exception("Usuario o contraseña incorrectas");
+
+            return usuario;
         }
     }
 }
