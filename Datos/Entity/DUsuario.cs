@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Data.Entity;
 
 namespace Datos.Entity
 {
@@ -31,8 +32,8 @@ namespace Datos.Entity
 			{
 				using (var context = new BDFEntities())
 				{
-					Usuario usuarioTemp= context.Usuario.Find(usuario.Codigo);
-					usuarioTemp.Nombre = usuario.Nombre;
+                    Usuario usuarioTemp = context.Usuario.FirstOrDefault(u => u.Codigo.Equals(usuario.Codigo));
+                    usuarioTemp.Nombre = usuario.Nombre;
 					usuarioTemp.Email= usuario.Email;
 					usuarioTemp.RolId= usuario.RolId;
 					context.SaveChanges();
@@ -45,11 +46,11 @@ namespace Datos.Entity
 				return ex.Message;
 			}
 		}
-		public String EliminarFisico(int codigoUsuario) {
+		public String EliminarFisico(string codigoUsuario) {
 			try
 			{
 				using (var context = new BDFEntities()) {
-					Usuario usuarioTemp = context.Usuario.Find(codigoUsuario);
+					Usuario usuarioTemp = context.Usuario.FirstOrDefault(u=>u.Codigo.Equals(codigoUsuario));
 					context.Usuario.Remove(usuarioTemp);
 					context.SaveChanges();
 				}
@@ -60,13 +61,13 @@ namespace Datos.Entity
 				return ex.Message;	
 			}		
 		}
-        public String EliminarLogico(int codigoUsuario)
+        public String EliminarLogico(string codigoUsuario)
         {
             try
             {
                 using (var context = new BDFEntities())
                 {
-                    Usuario usuarioTemp = context.Usuario.Find(codigoUsuario);
+                    Usuario usuarioTemp = context.Usuario.FirstOrDefault(u => u.Codigo.Equals(codigoUsuario));
                     usuarioTemp.Estado = 0;
                     context.SaveChanges();
                 }
@@ -83,9 +84,23 @@ namespace Datos.Entity
 			{
 				using (var context = new BDFEntities())
 				{
-					usuarios = context.Usuario.ToList();
+					return context.Usuario.Include(u=>u.Rol).ToList();
 				}
-				return usuarios;
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+		}
+		public bool ExisteUsuario(string codigoUsuario) {
+			try
+			{
+				using (var context = new BDFEntities())
+				{
+					return context.Usuario.Any(u => u.Codigo.Equals(codigoUsuario));
+
+				}
 			}
 			catch (Exception)
 			{

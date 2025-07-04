@@ -59,7 +59,6 @@
     <Compile Include="Calificacion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="Coleccion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
