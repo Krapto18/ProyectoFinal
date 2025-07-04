@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ff322c7ebde14f8c8bc05e21a5ea4ea2" Name="Diagram1" ZoomLevel="65">
+        <EntityTypeShape EntityType="ModelEF.Auditoria" Width="1.5" PointX="17.125" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelEF.Calificacion" Width="1.5" PointX="9.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelEF.Coleccion" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelEF.Comentario" Width="1.5" PointX="12.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelEF.Genero" Width="1.5" PointX="7.5" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelEF.Intercambio" Width="1.5" PointX="9.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelEF.Item" Width="1.5" PointX="7.5" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelEF.Item_Genero" Width="1.5" PointX="9.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelEF.Juego_Plataforma" Width="1.5" PointX="12.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelEF.Plataforma" Width="1.5" PointX="10.5" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelEF.Prestamo" Width="1.5" PointX="12.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelEF.Rol" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelEF.Usuario" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="ModelEF.FK__Calificac__ItemI__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelEF.FK__Calificac__Usuar__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelEF.FK__Coleccion__Usuar__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelEF.FK__Item__ColeccionI__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelEF.FK__Comentari__ItemI__7D439ABD" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelEF.FK__Comentari__Usuar__7C4F7684" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelEF.FK__Item_Gene__Gener__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelEF.FK__Intercamb__ItemO__06CD04F7" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelEF.FK__Intercamb__ItemS__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelEF.FK__Intercamb__Usuar__04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelEF.FK__Intercamb__Usuar__05D8E0BE" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelEF.FK__Item_Gene__ItemI__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelEF.FK__Juego_Pla__Juego__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelEF.FK__Prestamo__ItemId__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelEF.FK__Juego_Pla__Plata__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelEF.FK__Prestamo__Usuari__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelEF.FK__Usuario__RolId__4F7CD00D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,1092 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ModelEF.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Auditoria">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tabla" Type="nvarchar" MaxLength="100" />
+          <Property Name="CodigoRegistro" Type="varchar" MaxLength="20" />
+          <Property Name="Accion" Type="nvarchar" MaxLength="20" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="ValoresAntiguos" Type="nvarchar(max)" />
+          <Property Name="ValoresNuevos" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Calificacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="ItemId" Type="int" />
+          <Property Name="Puntuacion" Type="int" />
+          <Property Name="Comentario" Type="nvarchar" MaxLength="500" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Estado" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Coleccion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="255" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="Estado" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comentario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="ItemId" Type="int" />
+          <Property Name="Texto" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Estado" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Estado" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Intercambio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsuarioOfreceId" Type="int" />
+          <Property Name="UsuarioSolicitaId" Type="int" />
+          <Property Name="ItemOfrecidoId" Type="int" />
+          <Property Name="ItemSolicitadoId" Type="int" />
+          <Property Name="FechaSolicitud" Type="datetime" />
+          <Property Name="Estado" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="200" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Anio" Type="int" />
+          <Property Name="Genero" Type="nvarchar" MaxLength="100" />
+          <Property Name="ColeccionId" Type="int" />
+          <Property Name="Estado" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Genero">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemId" Type="int" />
+          <Property Name="GeneroId" Type="int" />
+          <Property Name="Estado" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Juego_Plataforma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JuegoId" Type="int" />
+          <Property Name="PlataformaId" Type="int" />
+          <Property Name="Estado" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plataforma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="Estado" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prestamo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ItemId" Type="int" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="FechaPrestamo" Type="datetime" />
+          <Property Name="FechaDevolucion" Type="datetime" />
+          <Property Name="Estado" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="255" />
+          <Property Name="Estado" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="RolId" Type="int" />
+          <Property Name="Estado" Type="smallint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Calificac__ItemI__76969D2E">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calificacion">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Calificac__Usuar__75A278F5">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calificacion">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Coleccion__Usuar__5441852A">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Coleccion" Type="Self.Coleccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Coleccion">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comentari__ItemI__7D439ABD">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comentari__Usuar__7C4F7684">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Intercamb__ItemO__06CD04F7">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Intercambio" Type="Self.Intercambio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Intercambio">
+              <PropertyRef Name="ItemOfrecidoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Intercamb__ItemS__07C12930">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Intercambio" Type="Self.Intercambio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Intercambio">
+              <PropertyRef Name="ItemSolicitadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Intercamb__Usuar__04E4BC85">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Intercambio" Type="Self.Intercambio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Intercambio">
+              <PropertyRef Name="UsuarioOfreceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Intercamb__Usuar__05D8E0BE">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Intercambio" Type="Self.Intercambio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Intercambio">
+              <PropertyRef Name="UsuarioSolicitaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Item__ColeccionI__59063A47">
+          <End Role="Coleccion" Type="Self.Coleccion" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coleccion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ColeccionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Item_Gene__Gener__6FE99F9F">
+          <End Role="Genero" Type="Self.Genero" Multiplicity="0..1" />
+          <End Role="Item_Genero" Type="Self.Item_Genero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genero">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item_Genero">
+              <PropertyRef Name="GeneroId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Item_Gene__ItemI__6EF57B66">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Item_Genero" Type="Self.Item_Genero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item_Genero">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Juego_Pla__Juego__66603565">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Juego_Plataforma" Type="Self.Juego_Plataforma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Juego_Plataforma">
+              <PropertyRef Name="JuegoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Juego_Pla__Plata__6754599E">
+          <End Role="Plataforma" Type="Self.Plataforma" Multiplicity="0..1" />
+          <End Role="Juego_Plataforma" Type="Self.Juego_Plataforma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plataforma">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Juego_Plataforma">
+              <PropertyRef Name="PlataformaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Prestamo__ItemId__5DCAEF64">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prestamo">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Prestamo__Usuari__5EBF139D">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prestamo">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__RolId__4F7CD00D">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelEFStoreContainer">
+          <EntitySet Name="Auditoria" EntityType="Self.Auditoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calificacion" EntityType="Self.Calificacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Coleccion" EntityType="Self.Coleccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comentario" EntityType="Self.Comentario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genero" EntityType="Self.Genero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Intercambio" EntityType="Self.Intercambio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item_Genero" EntityType="Self.Item_Genero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Juego_Plataforma" EntityType="Self.Juego_Plataforma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plataforma" EntityType="Self.Plataforma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prestamo" EntityType="Self.Prestamo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Calificac__ItemI__76969D2E" Association="Self.FK__Calificac__ItemI__76969D2E">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Calificacion" EntitySet="Calificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Calificac__Usuar__75A278F5" Association="Self.FK__Calificac__Usuar__75A278F5">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Calificacion" EntitySet="Calificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Coleccion__Usuar__5441852A" Association="Self.FK__Coleccion__Usuar__5441852A">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Coleccion" EntitySet="Coleccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comentari__ItemI__7D439ABD" Association="Self.FK__Comentari__ItemI__7D439ABD">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Comentario" EntitySet="Comentario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comentari__Usuar__7C4F7684" Association="Self.FK__Comentari__Usuar__7C4F7684">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Comentario" EntitySet="Comentario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Intercamb__ItemO__06CD04F7" Association="Self.FK__Intercamb__ItemO__06CD04F7">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Intercambio" EntitySet="Intercambio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Intercamb__ItemS__07C12930" Association="Self.FK__Intercamb__ItemS__07C12930">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Intercambio" EntitySet="Intercambio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Intercamb__Usuar__04E4BC85" Association="Self.FK__Intercamb__Usuar__04E4BC85">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Intercambio" EntitySet="Intercambio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Intercamb__Usuar__05D8E0BE" Association="Self.FK__Intercamb__Usuar__05D8E0BE">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Intercambio" EntitySet="Intercambio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Item__ColeccionI__59063A47" Association="Self.FK__Item__ColeccionI__59063A47">
+            <End Role="Coleccion" EntitySet="Coleccion" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Item_Gene__Gener__6FE99F9F" Association="Self.FK__Item_Gene__Gener__6FE99F9F">
+            <End Role="Genero" EntitySet="Genero" />
+            <End Role="Item_Genero" EntitySet="Item_Genero" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Item_Gene__ItemI__6EF57B66" Association="Self.FK__Item_Gene__ItemI__6EF57B66">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Item_Genero" EntitySet="Item_Genero" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Juego_Pla__Juego__66603565" Association="Self.FK__Juego_Pla__Juego__66603565">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Juego_Plataforma" EntitySet="Juego_Plataforma" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Juego_Pla__Plata__6754599E" Association="Self.FK__Juego_Pla__Plata__6754599E">
+            <End Role="Plataforma" EntitySet="Plataforma" />
+            <End Role="Juego_Plataforma" EntitySet="Juego_Plataforma" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Prestamo__ItemId__5DCAEF64" Association="Self.FK__Prestamo__ItemId__5DCAEF64">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Prestamo" EntitySet="Prestamo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Prestamo__Usuari__5EBF139D" Association="Self.FK__Prestamo__Usuari__5EBF139D">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Prestamo" EntitySet="Prestamo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__RolId__4F7CD00D" Association="Self.FK__Usuario__RolId__4F7CD00D">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ModelEF" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Auditoria">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tabla" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CodigoRegistro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Accion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="ValoresAntiguos" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ValoresNuevos" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Calificacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="ItemId" Type="Int32" />
+          <Property Name="Puntuacion" Type="Int32" />
+          <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Calificac__ItemI__76969D2E" FromRole="Calificacion" ToRole="Item" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Calificac__Usuar__75A278F5" FromRole="Calificacion" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Coleccion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="Estado" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Coleccion__Usuar__5441852A" FromRole="Coleccion" ToRole="Usuario" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Item__ColeccionI__59063A47" FromRole="Coleccion" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Comentario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="ItemId" Type="Int32" />
+          <Property Name="Texto" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Comentari__ItemI__7D439ABD" FromRole="Comentario" ToRole="Item" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Comentari__Usuar__7C4F7684" FromRole="Comentario" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Item_Genero" Relationship="Self.FK__Item_Gene__Gener__6FE99F9F" FromRole="Genero" ToRole="Item_Genero" />
+        </EntityType>
+        <EntityType Name="Intercambio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuarioOfreceId" Type="Int32" />
+          <Property Name="UsuarioSolicitaId" Type="Int32" />
+          <Property Name="ItemOfrecidoId" Type="Int32" />
+          <Property Name="ItemSolicitadoId" Type="Int32" />
+          <Property Name="FechaSolicitud" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Intercamb__ItemO__06CD04F7" FromRole="Intercambio" ToRole="Item" />
+          <NavigationProperty Name="Item1" Relationship="Self.FK__Intercamb__ItemS__07C12930" FromRole="Intercambio" ToRole="Item" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Intercamb__Usuar__04E4BC85" FromRole="Intercambio" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Intercamb__Usuar__05D8E0BE" FromRole="Intercambio" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Anio" Type="Int32" />
+          <Property Name="Genero" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ColeccionId" Type="Int32" />
+          <Property Name="Estado" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Calificacion" Relationship="Self.FK__Calificac__ItemI__76969D2E" FromRole="Item" ToRole="Calificacion" />
+          <NavigationProperty Name="Coleccion" Relationship="Self.FK__Item__ColeccionI__59063A47" FromRole="Item" ToRole="Coleccion" />
+          <NavigationProperty Name="Comentario" Relationship="Self.FK__Comentari__ItemI__7D439ABD" FromRole="Item" ToRole="Comentario" />
+          <NavigationProperty Name="Intercambio" Relationship="Self.FK__Intercamb__ItemO__06CD04F7" FromRole="Item" ToRole="Intercambio" />
+          <NavigationProperty Name="Intercambio1" Relationship="Self.FK__Intercamb__ItemS__07C12930" FromRole="Item" ToRole="Intercambio" />
+          <NavigationProperty Name="Item_Genero" Relationship="Self.FK__Item_Gene__ItemI__6EF57B66" FromRole="Item" ToRole="Item_Genero" />
+          <NavigationProperty Name="Juego_Plataforma" Relationship="Self.FK__Juego_Pla__Juego__66603565" FromRole="Item" ToRole="Juego_Plataforma" />
+          <NavigationProperty Name="Prestamo" Relationship="Self.FK__Prestamo__ItemId__5DCAEF64" FromRole="Item" ToRole="Prestamo" />
+        </EntityType>
+        <EntityType Name="Item_Genero">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="Int32" />
+          <Property Name="GeneroId" Type="Int32" />
+          <Property Name="Estado" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Genero" Relationship="Self.FK__Item_Gene__Gener__6FE99F9F" FromRole="Item_Genero" ToRole="Genero" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Item_Gene__ItemI__6EF57B66" FromRole="Item_Genero" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Juego_Plataforma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JuegoId" Type="Int32" />
+          <Property Name="PlataformaId" Type="Int32" />
+          <Property Name="Estado" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Juego_Pla__Juego__66603565" FromRole="Juego_Plataforma" ToRole="Item" />
+          <NavigationProperty Name="Plataforma" Relationship="Self.FK__Juego_Pla__Plata__6754599E" FromRole="Juego_Plataforma" ToRole="Plataforma" />
+        </EntityType>
+        <EntityType Name="Plataforma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Juego_Plataforma" Relationship="Self.FK__Juego_Pla__Plata__6754599E" FromRole="Plataforma" ToRole="Juego_Plataforma" />
+        </EntityType>
+        <EntityType Name="Prestamo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ItemId" Type="Int32" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="FechaPrestamo" Type="DateTime" Precision="3" />
+          <Property Name="FechaDevolucion" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Prestamo__ItemId__5DCAEF64" FromRole="Prestamo" ToRole="Item" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Prestamo__Usuari__5EBF139D" FromRole="Prestamo" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__RolId__4F7CD00D" FromRole="Rol" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RolId" Type="Int32" />
+          <Property Name="Estado" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Calificacion" Relationship="Self.FK__Calificac__Usuar__75A278F5" FromRole="Usuario" ToRole="Calificacion" />
+          <NavigationProperty Name="Coleccion" Relationship="Self.FK__Coleccion__Usuar__5441852A" FromRole="Usuario" ToRole="Coleccion" />
+          <NavigationProperty Name="Comentario" Relationship="Self.FK__Comentari__Usuar__7C4F7684" FromRole="Usuario" ToRole="Comentario" />
+          <NavigationProperty Name="Intercambio" Relationship="Self.FK__Intercamb__Usuar__04E4BC85" FromRole="Usuario" ToRole="Intercambio" />
+          <NavigationProperty Name="Intercambio1" Relationship="Self.FK__Intercamb__Usuar__05D8E0BE" FromRole="Usuario" ToRole="Intercambio" />
+          <NavigationProperty Name="Prestamo" Relationship="Self.FK__Prestamo__Usuari__5EBF139D" FromRole="Usuario" ToRole="Prestamo" />
+          <NavigationProperty Name="Rol" Relationship="Self.FK__Usuario__RolId__4F7CD00D" FromRole="Usuario" ToRole="Rol" />
+        </EntityType>
+        <Association Name="FK__Calificac__ItemI__76969D2E">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calificacion">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Calificac__Usuar__75A278F5">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calificacion">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Coleccion__Usuar__5441852A">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Coleccion" Type="Self.Coleccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Coleccion">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Item__ColeccionI__59063A47">
+          <End Role="Coleccion" Type="Self.Coleccion" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coleccion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ColeccionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comentari__ItemI__7D439ABD">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comentari__Usuar__7C4F7684">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Item_Gene__Gener__6FE99F9F">
+          <End Role="Genero" Type="Self.Genero" Multiplicity="0..1" />
+          <End Role="Item_Genero" Type="Self.Item_Genero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genero">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item_Genero">
+              <PropertyRef Name="GeneroId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Intercamb__ItemO__06CD04F7">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Intercambio" Type="Self.Intercambio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Intercambio">
+              <PropertyRef Name="ItemOfrecidoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Intercamb__ItemS__07C12930">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Intercambio" Type="Self.Intercambio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Intercambio">
+              <PropertyRef Name="ItemSolicitadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Intercamb__Usuar__04E4BC85">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Intercambio" Type="Self.Intercambio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Intercambio">
+              <PropertyRef Name="UsuarioOfreceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Intercamb__Usuar__05D8E0BE">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Intercambio" Type="Self.Intercambio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Intercambio">
+              <PropertyRef Name="UsuarioSolicitaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Item_Gene__ItemI__6EF57B66">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Item_Genero" Type="Self.Item_Genero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item_Genero">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Juego_Pla__Juego__66603565">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Juego_Plataforma" Type="Self.Juego_Plataforma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Juego_Plataforma">
+              <PropertyRef Name="JuegoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Prestamo__ItemId__5DCAEF64">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prestamo">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Juego_Pla__Plata__6754599E">
+          <End Role="Plataforma" Type="Self.Plataforma" Multiplicity="0..1" />
+          <End Role="Juego_Plataforma" Type="Self.Juego_Plataforma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plataforma">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Juego_Plataforma">
+              <PropertyRef Name="PlataformaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Prestamo__Usuari__5EBF139D">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prestamo">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__RolId__4F7CD00D">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDFEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Auditoria" EntityType="Self.Auditoria" />
+          <EntitySet Name="Calificacion" EntityType="Self.Calificacion" />
+          <EntitySet Name="Coleccion" EntityType="Self.Coleccion" />
+          <EntitySet Name="Comentario" EntityType="Self.Comentario" />
+          <EntitySet Name="Genero" EntityType="Self.Genero" />
+          <EntitySet Name="Intercambio" EntityType="Self.Intercambio" />
+          <EntitySet Name="Item" EntityType="Self.Item" />
+          <EntitySet Name="Item_Genero" EntityType="Self.Item_Genero" />
+          <EntitySet Name="Juego_Plataforma" EntityType="Self.Juego_Plataforma" />
+          <EntitySet Name="Plataforma" EntityType="Self.Plataforma" />
+          <EntitySet Name="Prestamo" EntityType="Self.Prestamo" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK__Calificac__ItemI__76969D2E" Association="Self.FK__Calificac__ItemI__76969D2E">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Calificacion" EntitySet="Calificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Calificac__Usuar__75A278F5" Association="Self.FK__Calificac__Usuar__75A278F5">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Calificacion" EntitySet="Calificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Coleccion__Usuar__5441852A" Association="Self.FK__Coleccion__Usuar__5441852A">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Coleccion" EntitySet="Coleccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Item__ColeccionI__59063A47" Association="Self.FK__Item__ColeccionI__59063A47">
+            <End Role="Coleccion" EntitySet="Coleccion" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comentari__ItemI__7D439ABD" Association="Self.FK__Comentari__ItemI__7D439ABD">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Comentario" EntitySet="Comentario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comentari__Usuar__7C4F7684" Association="Self.FK__Comentari__Usuar__7C4F7684">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Comentario" EntitySet="Comentario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Item_Gene__Gener__6FE99F9F" Association="Self.FK__Item_Gene__Gener__6FE99F9F">
+            <End Role="Genero" EntitySet="Genero" />
+            <End Role="Item_Genero" EntitySet="Item_Genero" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Intercamb__ItemO__06CD04F7" Association="Self.FK__Intercamb__ItemO__06CD04F7">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Intercambio" EntitySet="Intercambio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Intercamb__ItemS__07C12930" Association="Self.FK__Intercamb__ItemS__07C12930">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Intercambio" EntitySet="Intercambio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Intercamb__Usuar__04E4BC85" Association="Self.FK__Intercamb__Usuar__04E4BC85">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Intercambio" EntitySet="Intercambio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Intercamb__Usuar__05D8E0BE" Association="Self.FK__Intercamb__Usuar__05D8E0BE">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Intercambio" EntitySet="Intercambio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Item_Gene__ItemI__6EF57B66" Association="Self.FK__Item_Gene__ItemI__6EF57B66">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Item_Genero" EntitySet="Item_Genero" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Juego_Pla__Juego__66603565" Association="Self.FK__Juego_Pla__Juego__66603565">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Juego_Plataforma" EntitySet="Juego_Plataforma" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Prestamo__ItemId__5DCAEF64" Association="Self.FK__Prestamo__ItemId__5DCAEF64">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Prestamo" EntitySet="Prestamo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Juego_Pla__Plata__6754599E" Association="Self.FK__Juego_Pla__Plata__6754599E">
+            <End Role="Plataforma" EntitySet="Plataforma" />
+            <End Role="Juego_Plataforma" EntitySet="Juego_Plataforma" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Prestamo__Usuari__5EBF139D" Association="Self.FK__Prestamo__Usuari__5EBF139D">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Prestamo" EntitySet="Prestamo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__RolId__4F7CD00D" Association="Self.FK__Usuario__RolId__4F7CD00D">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelEFStoreContainer" CdmEntityContainer="BDFEntities">
+          <EntitySetMapping Name="Auditoria">
+            <EntityTypeMapping TypeName="ModelEF.Auditoria">
+              <MappingFragment StoreEntitySet="Auditoria">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tabla" ColumnName="Tabla" />
+                <ScalarProperty Name="CodigoRegistro" ColumnName="CodigoRegistro" />
+                <ScalarProperty Name="Accion" ColumnName="Accion" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="ValoresAntiguos" ColumnName="ValoresAntiguos" />
+                <ScalarProperty Name="ValoresNuevos" ColumnName="ValoresNuevos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calificacion">
+            <EntityTypeMapping TypeName="ModelEF.Calificacion">
+              <MappingFragment StoreEntitySet="Calificacion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="Puntuacion" ColumnName="Puntuacion" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Coleccion">
+            <EntityTypeMapping TypeName="ModelEF.Coleccion">
+              <MappingFragment StoreEntitySet="Coleccion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comentario">
+            <EntityTypeMapping TypeName="ModelEF.Comentario">
+              <MappingFragment StoreEntitySet="Comentario">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="Texto" ColumnName="Texto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genero">
+            <EntityTypeMapping TypeName="ModelEF.Genero">
+              <MappingFragment StoreEntitySet="Genero">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Intercambio">
+            <EntityTypeMapping TypeName="ModelEF.Intercambio">
+              <MappingFragment StoreEntitySet="Intercambio">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UsuarioOfreceId" ColumnName="UsuarioOfreceId" />
+                <ScalarProperty Name="UsuarioSolicitaId" ColumnName="UsuarioSolicitaId" />
+                <ScalarProperty Name="ItemOfrecidoId" ColumnName="ItemOfrecidoId" />
+                <ScalarProperty Name="ItemSolicitadoId" ColumnName="ItemSolicitadoId" />
+                <ScalarProperty Name="FechaSolicitud" ColumnName="FechaSolicitud" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item">
+            <EntityTypeMapping TypeName="ModelEF.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Anio" ColumnName="Anio" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="ColeccionId" ColumnName="ColeccionId" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Genero">
+            <EntityTypeMapping TypeName="ModelEF.Item_Genero">
+              <MappingFragment StoreEntitySet="Item_Genero">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="GeneroId" ColumnName="GeneroId" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Juego_Plataforma">
+            <EntityTypeMapping TypeName="ModelEF.Juego_Plataforma">
+              <MappingFragment StoreEntitySet="Juego_Plataforma">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="JuegoId" ColumnName="JuegoId" />
+                <ScalarProperty Name="PlataformaId" ColumnName="PlataformaId" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plataforma">
+            <EntityTypeMapping TypeName="ModelEF.Plataforma">
+              <MappingFragment StoreEntitySet="Plataforma">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prestamo">
+            <EntityTypeMapping TypeName="ModelEF.Prestamo">
+              <MappingFragment StoreEntitySet="Prestamo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="FechaPrestamo" ColumnName="FechaPrestamo" />
+                <ScalarProperty Name="FechaDevolucion" ColumnName="FechaDevolucion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="ModelEF.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="ModelEF.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
