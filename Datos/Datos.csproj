@@ -66,6 +66,8 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DColeccion.cs" />
+    <Compile Include="Entity\DItem.cs" />
+    <Compile Include="Entity\DPlataforma.cs" />
     <Compile Include="Entity\DRol.cs" />
     <Compile Include="Entity\DUsuario.cs" />
     <Compile Include="Genero.cs">
