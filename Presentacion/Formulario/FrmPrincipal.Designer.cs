@@ -38,6 +38,7 @@
             this.rolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.plataformasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.génerosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.entretenimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MnsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +66,8 @@
             // 
             this.MnsPrincipal.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.MnsPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuMantenimiento});
+            this.mnuMantenimiento,
+            this.entretenimientoToolStripMenuItem});
             this.MnsPrincipal.Location = new System.Drawing.Point(0, 0);
             this.MnsPrincipal.Name = "MnsPrincipal";
             this.MnsPrincipal.Size = new System.Drawing.Size(1293, 28);
@@ -90,6 +92,7 @@
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
             this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
+            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // coleccionesToolStripMenuItem
             // 
@@ -121,6 +124,12 @@
             this.génerosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.génerosToolStripMenuItem.Text = "Géneros";
             // 
+            // entretenimientoToolStripMenuItem
+            // 
+            this.entretenimientoToolStripMenuItem.Name = "entretenimientoToolStripMenuItem";
+            this.entretenimientoToolStripMenuItem.Size = new System.Drawing.Size(129, 24);
+            this.entretenimientoToolStripMenuItem.Text = "Entretenimiento";
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -151,5 +160,6 @@
         private System.Windows.Forms.ToolStripMenuItem itemsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem plataformasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem génerosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem entretenimientoToolStripMenuItem;
     }
 }
