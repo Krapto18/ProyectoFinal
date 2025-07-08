@@ -40,5 +40,34 @@ namespace Presentacion.Formulario
             FrmUsuario frm = new FrmUsuario();
             frm.Show();
         }
+
+        private void rolesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmRol frm = new FrmRol();
+            frm.Show();
+        }
+
+        private void BibliotecaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void plataformasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmPlataforma frm = new FrmPlataforma();
+            frm.Show();
+        }
+
+        private void misColeccionesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmColeccion frm = new FrmColeccion(usuarioLogueado);
+            frm.Show();
+        }
+
+        private void misItemsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmItem frm = new FrmItem();
+            frm.Show();
+        }
     }
 }

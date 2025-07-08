@@ -167,17 +167,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formulario\FrmColeccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FrmColeccion.Designer.cs">
+      <DependentUpon>FrmColeccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FrmGenero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FrmGenero.Designer.cs">
+      <DependentUpon>FrmGenero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FrmItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FrmItem.Designer.cs">
+      <DependentUpon>FrmItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formulario\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formulario\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formulario\FrmPlataforma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FrmPlataforma.Designer.cs">
+      <DependentUpon>FrmPlataforma.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formulario\FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formulario\FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FrmRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FrmRol.Designer.cs">
+      <DependentUpon>FrmRol.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\FrmUsuario.cs">
       <SubType>Form</SubType>
@@ -187,11 +217,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formulario\FrmColeccion.resx">
+      <DependentUpon>FrmColeccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FrmGenero.resx">
+      <DependentUpon>FrmGenero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FrmItem.resx">
+      <DependentUpon>FrmItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FrmPlataforma.resx">
+      <DependentUpon>FrmPlataforma.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FrmRol.resx">
+      <DependentUpon>FrmRol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FrmUsuario.resx">
       <DependentUpon>FrmUsuario.cs</DependentUpon>

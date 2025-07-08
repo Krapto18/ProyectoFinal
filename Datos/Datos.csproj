@@ -65,9 +65,17 @@
     <Compile Include="Comentario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\DAuditoria.cs" />
+    <Compile Include="Entity\DCalificacion.cs" />
     <Compile Include="Entity\DColeccion.cs" />
+    <Compile Include="Entity\DComentario.cs" />
+    <Compile Include="Entity\DGenero.cs" />
+    <Compile Include="Entity\DIntercambio.cs" />
     <Compile Include="Entity\DItem.cs" />
+    <Compile Include="Entity\DItemGenero.cs" />
+    <Compile Include="Entity\DJuegoPlataforma.cs" />
     <Compile Include="Entity\DPlataforma.cs" />
+    <Compile Include="Entity\DPrestamo.cs" />
     <Compile Include="Entity\DRol.cs" />
     <Compile Include="Entity\DUsuario.cs" />
     <Compile Include="Genero.cs">

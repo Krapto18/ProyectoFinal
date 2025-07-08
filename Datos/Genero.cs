@@ -18,6 +18,7 @@ namespace Datos
         public Genero()
         {
             this.Item_Genero = new HashSet<Item_Genero>();
+            this.Item = new HashSet<Item>();
         }
     
         public int Id { get; set; }
@@ -27,5 +28,7 @@ namespace Datos
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Item_Genero> Item_Genero { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Item> Item { get; set; }
     }
 }

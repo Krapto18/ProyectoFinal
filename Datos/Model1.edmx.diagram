@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ff322c7ebde14f8c8bc05e21a5ea4ea2" Name="Diagram1" ZoomLevel="65">
+      <Diagram DiagramId="ff322c7ebde14f8c8bc05e21a5ea4ea2" Name="Diagram1" ZoomLevel="59">
         <EntityTypeShape EntityType="ModelEF.Auditoria" Width="1.5" PointX="17.125" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelEF.Calificacion" Width="1.5" PointX="9.75" PointY="12.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelEF.Coleccion" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
@@ -35,6 +35,7 @@
         <AssociationConnector Association="ModelEF.FK__Juego_Pla__Plata__6754599E" ManuallyRouted="false" />
         <AssociationConnector Association="ModelEF.FK__Prestamo__Usuari__5EBF139D" ManuallyRouted="false" />
         <AssociationConnector Association="ModelEF.FK__Usuario__RolId__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelEF.FK_Item_Genero" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

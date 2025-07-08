@@ -43,7 +43,17 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\NAuditoria.cs" />
+    <Compile Include="Service\NCalificacion.cs" />
     <Compile Include="Service\NColeccion.cs" />
+    <Compile Include="Service\NComentario.cs" />
+    <Compile Include="Service\NGenero.cs" />
+    <Compile Include="Service\NIntercambio.cs" />
+    <Compile Include="Service\NItem.cs" />
+    <Compile Include="Service\NItemGenero.cs" />
+    <Compile Include="Service\NJuegoPlataforma.cs" />
+    <Compile Include="Service\NPlataforma.cs" />
+    <Compile Include="Service\NPrestamo.cs" />
     <Compile Include="Service\NRol.cs" />
     <Compile Include="Service\NUsuario.cs" />
   </ItemGroup>

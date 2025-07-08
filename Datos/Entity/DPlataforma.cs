@@ -30,7 +30,7 @@ namespace Datos.Entity
             {
                 using (var context = new BDFEntities())
                 {
-                    Plataforma plataformaTemp = context.Plataforma.Find(plataforma.Codigo);
+                    Plataforma plataformaTemp = context.Plataforma.FirstOrDefault(p => p.Codigo.Equals(plataforma.Codigo));
                     plataformaTemp.Nombre = plataforma.Nombre;
                     context.SaveChanges();
                 }
@@ -42,13 +42,13 @@ namespace Datos.Entity
                 return ex.Message;
             }
         }
-        public String EliminarFisico(int codigoPlataforma)
+        public String EliminarFisico(string codigoPlataforma)
         {
             try
             {
                 using (var context = new BDFEntities())
                 {
-                    Plataforma plataformaTemp = context.Plataforma.Find(codigoPlataforma);
+                    Plataforma plataformaTemp = context.Plataforma.FirstOrDefault(p => p.Codigo.Equals(codigoPlataforma));
                     context.Plataforma.Remove(plataformaTemp);
                     context.SaveChanges();
                 }
@@ -59,13 +59,13 @@ namespace Datos.Entity
                 return ex.Message;
             }
         }
-        public String EliminarLogico(int codigoPlataforma)
+        public String EliminarLogico(string codigoPlataforma)
         {
             try
             {
                 using (var context = new BDFEntities())
                 {
-                    Plataforma plataformaTemp = context.Plataforma.Find(codigoPlataforma);
+                    Plataforma plataformaTemp = context.Plataforma.FirstOrDefault(p=>p.Codigo.Equals(codigoPlataforma));
                     plataformaTemp.Estado = 0;
                     context.SaveChanges();
                 }
@@ -86,6 +86,22 @@ namespace Datos.Entity
                     plataformas = context.Plataforma.ToList();
                 }
                 return plataformas;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public bool ExistePlataforma(string codigoPlataforma)
+        {
+            try
+            {
+                using (var context = new BDFEntities())
+                {
+                    return context.Plataforma.Any(p => p.Codigo.Equals(codigoPlataforma));
+
+                }
             }
             catch (Exception)
             {

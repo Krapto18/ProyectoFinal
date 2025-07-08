@@ -6,107 +6,92 @@ using System.Threading.Tasks;
 
 namespace Datos.Entity
 {
-    public class DRol
+    public class DGenero
     {
-        public String Registrar(Rol rol)
+        public string Registrar(Genero genero)
         {
             try
             {
                 using (var context = new BDFEntities())
                 {
-                    context.Rol.Add(rol);
+                    genero.Estado = 1;
+                    context.Genero.Add(genero);
                     context.SaveChanges();
                 }
-                return "Registrado correctamente";
+                return "Género registrado correctamente";
             }
             catch (Exception ex)
             {
                 return ex.Message;
             }
         }
-        public String Modificar(Rol rol)
-        {
-            try
-            {
-                using (var context = new BDFEntities())
-                {
-                    Rol rolTemp = context.Rol.FirstOrDefault(r => r.Codigo.Equals(rol.Codigo));
-                    rolTemp.Nombre = rol.Nombre;
-                    rolTemp.Descripcion = rol.Descripcion;
-                    context.SaveChanges();
-                }
-                return "Modificado correctamente";
-            }
-            catch (Exception ex)
-            {
 
-                return ex.Message;
-            }
-        }
-        public String EliminarFisico(string codigoRol)
+        public string Modificar(Genero genero)
         {
             try
             {
                 using (var context = new BDFEntities())
                 {
-                    Rol rolTemp = context.Rol.Find(codigoRol);
-                    context.Rol.Remove(rolTemp);
+                    var temp = context.Genero.FirstOrDefault(g => g.Codigo == genero.Codigo);
+                    if (temp == null) return "Género no encontrado.";
+                    temp.Nombre = genero.Nombre;
                     context.SaveChanges();
                 }
-                return "Rol eliminado físicamente";
+                return "Género modificado correctamente";
             }
             catch (Exception ex)
             {
                 return ex.Message;
             }
         }
-        public String EliminarLogico(string codigoRol)
+
+        public string EliminarLogico(string codigoGenero)
         {
             try
             {
                 using (var context = new BDFEntities())
                 {
-                    Rol rolTemp = context.Rol.FirstOrDefault(r=> r.Codigo.Equals(codigoRol));
-                    rolTemp.Estado = 0;
+                    var temp = context.Genero.FirstOrDefault(g => g.Codigo == codigoGenero);
+                    if (temp == null) return "Género no encontrado.";
+                    temp.Estado = 0;
                     context.SaveChanges();
                 }
-                return "Rol eliminado lógicamente";
+                return "Género eliminado lógicamente";
             }
             catch (Exception ex)
             {
                 return ex.Message;
             }
         }
-        public List<Rol> ListarRoles()
+
+        public bool ExisteGenero(string codigoGenero)
         {
-            List<Rol> roles = new List<Rol>();
             try
             {
                 using (var context = new BDFEntities())
                 {
-                    roles = context.Rol.ToList();
+                    return context.Genero.Any(g => g.Codigo == codigoGenero);
                 }
-                return roles;
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
-        public bool ExisteRol(string codigoRol)
+
+        public List<Genero> ListarGeneros()
         {
+            List<Genero> generos = new List<Genero>();
             try
             {
                 using (var context = new BDFEntities())
                 {
-                    return context.Rol.Any(r => r.Codigo.Equals(codigoRol));
-
+                    generos = context.Genero.ToList();
                 }
+                return generos;
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

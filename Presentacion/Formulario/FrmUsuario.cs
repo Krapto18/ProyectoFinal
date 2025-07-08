@@ -46,6 +46,7 @@ namespace Presentacion
                 u.Codigo,
                 u.Nombre,
                 u.Email,
+                Usuario = u.NombreUsuario,
                 Rol = u.Rol != null ? u.Rol.Nombre : "Sin rol",
                 Estado = u.Estado == 1 ? "Activo" : "Inactivo"
             }).ToList();
@@ -97,11 +98,15 @@ namespace Presentacion
                 TxtCodigoUsuario.Text = fila.Cells["Codigo"].Value.ToString();
                 TxtNombreUsuario.Text = fila.Cells["Nombre"].Value.ToString();
                 TxtEmailUsuario.Text = fila.Cells["Email"].Value.ToString();
+                TxtNombreUsuario.Text = fila.Cells["Usuario"].Value.ToString();
+                //TxtContraseniaUsuario.Text = fila.Cells["Contraseña"].Value.ToString();
 
                 // Busca el Rol por nombre y lo selecciona en el ComboBox
                 string rolNombre = fila.Cells["Rol"].Value.ToString();
                 CbRolUsuario.SelectedIndex = CbRolUsuario.FindStringExact(rolNombre);
                 TxtCodigoUsuario.Enabled = false;
+                TxtNombreUsuario.Enabled = false;
+                TxtContraseniaUsuario.Enabled = false;
             }
         }
         //Configuración de caja de texto de búsqueda
@@ -150,7 +155,8 @@ namespace Presentacion
         //Configuración de botones
         private void btnRegistrarUsuario_Click(object sender, EventArgs e)
         {
-            if (TxtNombreUsuario.Text == "" || TxtCodigoUsuario.Text == "" || TxtEmailUsuario.Text == "" || CbRolUsuario.SelectedIndex == -1)
+            if (TxtNombreUsuario.Text == "" || TxtCodigoUsuario.Text == "" || TxtEmailUsuario.Text == "" || TxtUsuario.Text=="" 
+                || TxtContraseniaUsuario.Text==""|| CbRolUsuario.SelectedIndex == -1)
             {
                 MessageBox.Show("Ingrese todos los campos");
                 return;
@@ -162,6 +168,8 @@ namespace Presentacion
                 Nombre = TxtNombreUsuario.Text,
                 Email = TxtEmailUsuario.Text,
                 RolId = Convert.ToInt32(CbRolUsuario.SelectedValue),
+                NombreUsuario=TxtUsuario.Text,
+                Contrasenia=TxtContraseniaUsuario.Text,
                 Estado = 1,
                 FechaRegistro = DateTime.Now
             };

@@ -84,6 +84,7 @@
             this.TxtContrasenia.Name = "TxtContrasenia";
             this.TxtContrasenia.Size = new System.Drawing.Size(282, 22);
             this.TxtContrasenia.TabIndex = 4;
+            this.TxtContrasenia.UseSystemPasswordChar = true;
             // 
             // pictureBox1
             // 

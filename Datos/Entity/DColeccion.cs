@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace Datos.Entity
 {
@@ -30,7 +32,7 @@ namespace Datos.Entity
             {
                 using (var context = new BDFEntities())
                 {
-                    Coleccion coleccionTemp = context.Coleccion.Find(coleccion.Codigo);
+                    Coleccion coleccionTemp = context.Coleccion.FirstOrDefault(c=>c.Codigo.Equals(coleccion.Codigo));
                     coleccionTemp.Nombre = coleccion.Nombre;
                     coleccionTemp.Descripcion = coleccion.Descripcion;
                     context.SaveChanges();
@@ -43,13 +45,13 @@ namespace Datos.Entity
                 return ex.Message;
             }
         }
-        public String EliminarFisico(int codigoColeccion)
+        public String EliminarFisico(string codigoColeccion)
         {
             try
             {
                 using (var context = new BDFEntities())
                 {
-                    Coleccion coleccionTemp = context.Coleccion.Find(codigoColeccion);
+                    Coleccion coleccionTemp = context.Coleccion.FirstOrDefault(c => c.Codigo.Equals(codigoColeccion));
                     context.Coleccion.Remove(coleccionTemp);
                     context.SaveChanges();
                 }
@@ -60,13 +62,13 @@ namespace Datos.Entity
                 return ex.Message;
             }
         }
-        public String EliminarLogico(int codigoColeccion)
+        public String EliminarLogico(string codigoColeccion)
         {
             try
             {
                 using (var context = new BDFEntities())
                 {
-                    Coleccion coleccionTemp = context.Coleccion.Find(codigoColeccion);
+                    Coleccion coleccionTemp = context.Coleccion.FirstOrDefault(c => c.Codigo.Equals(codigoColeccion));
                     coleccionTemp.Estado = 0;
                     context.SaveChanges();
                 }
@@ -84,9 +86,24 @@ namespace Datos.Entity
             {
                 using (var context = new BDFEntities())
                 {
-                    colecciones = context.Coleccion.ToList();
+                    return context.Coleccion.Include(c => c.Usuario).ToList();
                 }
-                return colecciones;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public bool ExisteColeccion(string codigoColeccion)
+        {
+            try
+            {
+                using (var context = new BDFEntities())
+                {
+                    return context.Coleccion.Any(u => u.Codigo.Equals(codigoColeccion));
+
+                }
             }
             catch (Exception)
             {

@@ -45,6 +45,10 @@
             this.TxtBuscarNombreUsuario = new System.Windows.Forms.TextBox();
             this.DgvUsuarios = new System.Windows.Forms.DataGridView();
             this.BtnLimpiarUsuario = new System.Windows.Forms.Button();
+            this.TxtUsuario = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.TxtContraseniaUsuario = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,7 +97,7 @@
             this.btnRegistrarUsuario.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btnRegistrarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarUsuario.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnRegistrarUsuario.Location = new System.Drawing.Point(118, 167);
+            this.btnRegistrarUsuario.Location = new System.Drawing.Point(120, 211);
             this.btnRegistrarUsuario.Name = "btnRegistrarUsuario";
             this.btnRegistrarUsuario.Size = new System.Drawing.Size(133, 42);
             this.btnRegistrarUsuario.TabIndex = 4;
@@ -106,7 +110,7 @@
             this.btnModificarUsuario.BackColor = System.Drawing.SystemColors.Info;
             this.btnModificarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificarUsuario.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnModificarUsuario.Location = new System.Drawing.Point(307, 167);
+            this.btnModificarUsuario.Location = new System.Drawing.Point(309, 211);
             this.btnModificarUsuario.Name = "btnModificarUsuario";
             this.btnModificarUsuario.Size = new System.Drawing.Size(133, 42);
             this.btnModificarUsuario.TabIndex = 5;
@@ -119,7 +123,7 @@
             this.btnEliminarUsuario.BackColor = System.Drawing.Color.IndianRed;
             this.btnEliminarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarUsuario.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnEliminarUsuario.Location = new System.Drawing.Point(488, 167);
+            this.btnEliminarUsuario.Location = new System.Drawing.Point(490, 211);
             this.btnEliminarUsuario.Name = "btnEliminarUsuario";
             this.btnEliminarUsuario.Size = new System.Drawing.Size(133, 42);
             this.btnEliminarUsuario.TabIndex = 6;
@@ -212,11 +216,50 @@
             this.BtnLimpiarUsuario.UseVisualStyleBackColor = true;
             this.BtnLimpiarUsuario.Click += new System.EventHandler(this.BtnLimpiarUsuario_Click);
             // 
+            // TxtUsuario
+            // 
+            this.TxtUsuario.Location = new System.Drawing.Point(123, 154);
+            this.TxtUsuario.Name = "TxtUsuario";
+            this.TxtUsuario.Size = new System.Drawing.Size(240, 22);
+            this.TxtUsuario.TabIndex = 17;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(40, 156);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 20);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Usuario";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(396, 156);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(105, 20);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Contraseña";
+            // 
+            // TxtContraseniaUsuario
+            // 
+            this.TxtContraseniaUsuario.Location = new System.Drawing.Point(518, 154);
+            this.TxtContraseniaUsuario.Name = "TxtContraseniaUsuario";
+            this.TxtContraseniaUsuario.Size = new System.Drawing.Size(205, 22);
+            this.TxtContraseniaUsuario.TabIndex = 20;
+            this.TxtContraseniaUsuario.UseSystemPasswordChar = true;
+            // 
             // FrmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(752, 521);
+            this.Controls.Add(this.TxtContraseniaUsuario);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.TxtUsuario);
             this.Controls.Add(this.BtnLimpiarUsuario);
             this.Controls.Add(this.DgvUsuarios);
             this.Controls.Add(this.TxtBuscarNombreUsuario);
@@ -260,5 +303,9 @@
         private System.Windows.Forms.TextBox TxtBuscarNombreUsuario;
         private System.Windows.Forms.DataGridView DgvUsuarios;
         private System.Windows.Forms.Button BtnLimpiarUsuario;
+        private System.Windows.Forms.TextBox TxtUsuario;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox TxtContraseniaUsuario;
     }
 }

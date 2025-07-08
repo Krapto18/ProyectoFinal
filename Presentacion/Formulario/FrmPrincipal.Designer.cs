@@ -32,13 +32,17 @@
             this.LblRol = new System.Windows.Forms.Label();
             this.MnsPrincipal = new System.Windows.Forms.MenuStrip();
             this.mnuMantenimiento = new System.Windows.Forms.ToolStripMenuItem();
-            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.coleccionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.plataformasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.génerosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.entretenimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BibliotecaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.misColeccionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.intercambiosPréstToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.auditoríaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.misColeccionesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.misItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MnsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +71,11 @@
             this.MnsPrincipal.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.MnsPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuMantenimiento,
-            this.entretenimientoToolStripMenuItem});
+            this.BibliotecaToolStripMenuItem,
+            this.misColeccionesToolStripMenuItem,
+            this.intercambiosPréstToolStripMenuItem,
+            this.auditoríaToolStripMenuItem,
+            this.cerrarSesiónToolStripMenuItem});
             this.MnsPrincipal.Location = new System.Drawing.Point(0, 0);
             this.MnsPrincipal.Name = "MnsPrincipal";
             this.MnsPrincipal.Size = new System.Drawing.Size(1293, 28);
@@ -79,56 +87,86 @@
             this.mnuMantenimiento.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.rolesToolStripMenuItem,
             this.usuariosToolStripMenuItem,
-            this.coleccionesToolStripMenuItem,
-            this.itemsToolStripMenuItem,
             this.plataformasToolStripMenuItem,
             this.génerosToolStripMenuItem});
             this.mnuMantenimiento.Name = "mnuMantenimiento";
             this.mnuMantenimiento.Size = new System.Drawing.Size(124, 24);
             this.mnuMantenimiento.Text = "Mantenimiento";
             // 
-            // usuariosToolStripMenuItem
-            // 
-            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.usuariosToolStripMenuItem.Text = "Usuarios";
-            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
-            // 
-            // coleccionesToolStripMenuItem
-            // 
-            this.coleccionesToolStripMenuItem.Name = "coleccionesToolStripMenuItem";
-            this.coleccionesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.coleccionesToolStripMenuItem.Text = "Colecciones";
-            // 
-            // itemsToolStripMenuItem
-            // 
-            this.itemsToolStripMenuItem.Name = "itemsToolStripMenuItem";
-            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.itemsToolStripMenuItem.Text = "Items";
-            // 
             // rolesToolStripMenuItem
             // 
             this.rolesToolStripMenuItem.Name = "rolesToolStripMenuItem";
-            this.rolesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.rolesToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.rolesToolStripMenuItem.Text = "Roles";
+            this.rolesToolStripMenuItem.Click += new System.EventHandler(this.rolesToolStripMenuItem_Click);
+            // 
+            // usuariosToolStripMenuItem
+            // 
+            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
+            this.usuariosToolStripMenuItem.Text = "Usuarios";
+            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // plataformasToolStripMenuItem
             // 
             this.plataformasToolStripMenuItem.Name = "plataformasToolStripMenuItem";
             this.plataformasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.plataformasToolStripMenuItem.Text = "Plataformas";
+            this.plataformasToolStripMenuItem.Click += new System.EventHandler(this.plataformasToolStripMenuItem_Click);
             // 
             // génerosToolStripMenuItem
             // 
             this.génerosToolStripMenuItem.Name = "génerosToolStripMenuItem";
-            this.génerosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.génerosToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.génerosToolStripMenuItem.Text = "Géneros";
             // 
-            // entretenimientoToolStripMenuItem
+            // BibliotecaToolStripMenuItem
             // 
-            this.entretenimientoToolStripMenuItem.Name = "entretenimientoToolStripMenuItem";
-            this.entretenimientoToolStripMenuItem.Size = new System.Drawing.Size(129, 24);
-            this.entretenimientoToolStripMenuItem.Text = "Entretenimiento";
+            this.BibliotecaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.misColeccionesToolStripMenuItem1,
+            this.misItemsToolStripMenuItem});
+            this.BibliotecaToolStripMenuItem.Name = "BibliotecaToolStripMenuItem";
+            this.BibliotecaToolStripMenuItem.Size = new System.Drawing.Size(111, 24);
+            this.BibliotecaToolStripMenuItem.Text = "Mi Biblioteca";
+            this.BibliotecaToolStripMenuItem.Click += new System.EventHandler(this.BibliotecaToolStripMenuItem_Click);
+            // 
+            // misColeccionesToolStripMenuItem
+            // 
+            this.misColeccionesToolStripMenuItem.Name = "misColeccionesToolStripMenuItem";
+            this.misColeccionesToolStripMenuItem.Size = new System.Drawing.Size(129, 24);
+            this.misColeccionesToolStripMenuItem.Text = "Mis Colecciones";
+            // 
+            // intercambiosPréstToolStripMenuItem
+            // 
+            this.intercambiosPréstToolStripMenuItem.Name = "intercambiosPréstToolStripMenuItem";
+            this.intercambiosPréstToolStripMenuItem.Size = new System.Drawing.Size(191, 24);
+            this.intercambiosPréstToolStripMenuItem.Text = "Intercambios / Préstamos";
+            // 
+            // auditoríaToolStripMenuItem
+            // 
+            this.auditoríaToolStripMenuItem.Name = "auditoríaToolStripMenuItem";
+            this.auditoríaToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
+            this.auditoríaToolStripMenuItem.Text = "Auditoría";
+            // 
+            // cerrarSesiónToolStripMenuItem
+            // 
+            this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(110, 24);
+            this.cerrarSesiónToolStripMenuItem.Text = "Cerrar Sesión";
+            // 
+            // misColeccionesToolStripMenuItem1
+            // 
+            this.misColeccionesToolStripMenuItem1.Name = "misColeccionesToolStripMenuItem1";
+            this.misColeccionesToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.misColeccionesToolStripMenuItem1.Text = "Mis Colecciones";
+            this.misColeccionesToolStripMenuItem1.Click += new System.EventHandler(this.misColeccionesToolStripMenuItem1_Click);
+            // 
+            // misItemsToolStripMenuItem
+            // 
+            this.misItemsToolStripMenuItem.Name = "misItemsToolStripMenuItem";
+            this.misItemsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.misItemsToolStripMenuItem.Text = "Mis Items";
+            this.misItemsToolStripMenuItem.Click += new System.EventHandler(this.misItemsToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -156,10 +194,14 @@
         private System.Windows.Forms.ToolStripMenuItem mnuMantenimiento;
         private System.Windows.Forms.ToolStripMenuItem rolesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem coleccionesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem itemsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem plataformasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem génerosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem entretenimientoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem BibliotecaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem misColeccionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem intercambiosPréstToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem auditoríaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem misColeccionesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem misItemsToolStripMenuItem;
     }
 }

@@ -3,118 +3,128 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace Datos.Entity
 {
     public class DItem
     {
-        public String Registrar(Item item)
+        public string Registrar(Item item)
         {
             try
             {
                 using (var context = new BDFEntities())
                 {
+                    item.Estado = 1;
                     context.Item.Add(item);
                     context.SaveChanges();
+                    return "Item registrado correctamente";
                 }
-                return "Registrado correctamente";
             }
             catch (Exception ex)
             {
                 return ex.Message;
             }
         }
-        public String Modificar(Item item)
+
+        public string Modificar(Item item)
         {
             if (string.IsNullOrWhiteSpace(item.Codigo))
-                return "Código de item inválido.";
+                return "Código del item inválido.";
+
             try
             {
                 using (var context = new BDFEntities())
                 {
-                    Item itemTemp = context.Item.FirstOrDefault(i => i.Codigo.Equals(item.Codigo));
+                    var itemTemp = context.Item.FirstOrDefault(i => i.Codigo.Equals(item.Codigo));
                     if (itemTemp == null)
-                    {
-                        return "El item no fue encontrado para modificar.";
-                    }
+                        return "El item no fue encontrado.";
+
                     itemTemp.Titulo = item.Titulo;
                     itemTemp.Tipo = item.Tipo;
                     itemTemp.Anio = item.Anio;
-                    itemTemp.Genero = item.Genero;
+                    itemTemp.GeneroId = item.GeneroId;
                     itemTemp.ColeccionId = item.ColeccionId;
-                    context.SaveChanges();
-                }
-                return "Modificado correctamente";
-            }
-            catch (Exception ex)
-            {
 
-                return ex.Message;
-            }
-        }
-        public String EliminarFisico(string codigoItem)
-        {
-            try
-            {
-                using (var context = new BDFEntities())
-                {
-                    Item itemTemp = context.Item.FirstOrDefault(i => i.Codigo.Equals(codigoItem));
-                    context.Item.Remove(itemTemp);
                     context.SaveChanges();
+                    return "Item modificado correctamente";
                 }
-                return "Item eliminado físicamente";
             }
             catch (Exception ex)
             {
                 return ex.Message;
             }
         }
-        public String EliminarLogico(string codigoItem)
+
+        public string EliminarLogico(string codigo)
         {
             try
             {
                 using (var context = new BDFEntities())
                 {
-                    Item itemTemp = context.Item.FirstOrDefault(i => i.Codigo.Equals(codigoItem));
-                    itemTemp.Estado = 0;
+                    var item = context.Item.FirstOrDefault(i => i.Codigo.Equals(codigo));
+                    if (item == null)
+                        return "Item no encontrado.";
+
+                    item.Estado = 0;
                     context.SaveChanges();
+                    return "Item eliminado lógicamente";
                 }
-                return "Item eliminado lógicamente";
             }
             catch (Exception ex)
             {
                 return ex.Message;
             }
         }
-        //public List<Item> ListarItems()
-        //{
-        //    List<Item> items = new List<Item>();
-        //    try
-        //    {
-        //        using (var context = new BDFEntities())
-        //        {
-        //            return context.Item.Include(i => i.Coleccion).ToList();
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
 
-        //        throw;
-        //    }
-        //}
-        public bool ExisteItem(string codigoItem)
+        public List<Item> ListarItems()
         {
             try
             {
                 using (var context = new BDFEntities())
                 {
-                    return context.Item.Any(u => u.Codigo.Equals(codigoItem));
-
+                    return context.Item
+                        .Include(i => i.Coleccion)
+                        .Where(i => i.Estado == 1)
+                        .ToList();
                 }
             }
-            catch (Exception)
+            catch
             {
+                throw;
+            }
+        }
 
+        public List<Item> ListarPorColeccion(int coleccionId)
+        {
+            try
+            {
+                using (var context = new BDFEntities())
+                {
+                    return context.Item
+                        .Include(i => i.Coleccion)
+                        .Include(i => i.Genero1)
+                        .Where(i => i.ColeccionId == coleccionId && i.Estado == 1)
+                        .ToList();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public bool ExisteItem(string codigo)
+        {
+            try
+            {
+                using (var context = new BDFEntities())
+                {
+                    return context.Item.Any(i => i.Codigo.Equals(codigo));
+                }
+            }
+            catch
+            {
                 throw;
             }
         }

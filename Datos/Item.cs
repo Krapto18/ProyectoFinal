@@ -31,9 +31,9 @@ namespace Datos
         public string Titulo { get; set; }
         public string Tipo { get; set; }
         public Nullable<int> Anio { get; set; }
-        public string Genero { get; set; }
         public Nullable<int> ColeccionId { get; set; }
         public short Estado { get; set; }
+        public Nullable<int> GeneroId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Calificacion> Calificacion { get; set; }
@@ -50,5 +50,6 @@ namespace Datos
         public virtual ICollection<Juego_Plataforma> Juego_Plataforma { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Prestamo> Prestamo { get; set; }
+        public virtual Genero Genero1 { get; set; }
     }
 }
