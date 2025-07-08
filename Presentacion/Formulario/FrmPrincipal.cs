@@ -69,5 +69,20 @@ namespace Presentacion.Formulario
             FrmItem frm = new FrmItem();
             frm.Show();
         }
+
+        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Seguro que deseas cerrar sesión?", "Cerrar Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Hide(); // Oculta el formulario principal
+                FrmLogin login = new FrmLogin();
+                login.Show(); // Muestra nuevamente el login
+
+                // También puedes cerrar completamente el formulario principal si no deseas regresar.
+                this.Close();
+            }
+        }
     }
 }
